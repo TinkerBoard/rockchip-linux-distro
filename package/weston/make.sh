@@ -21,6 +21,7 @@ if [ -d $DISTRO_DIR/package/$PKG/$VERSION ]; then
 		echo "apply patch: "$p
 		patch -p1 < $p;
 	done
+	cp $DISTRO_DIR/package/$PKG/weston.sh $TARGET_DIR/etc/profile.d/
 fi
 
 autoreconf -i
