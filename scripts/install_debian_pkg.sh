@@ -48,7 +48,15 @@ echo "omitdebsrc=true" >> $OUTPUT_DIR/multistrap.conf
 echo "" >> $OUTPUT_DIR/multistrap.conf
 
 echo "download and install "$PACKAGES". it will take a while. log will be saved in $OUTPUT_DIR/log"
-dpkg -X $DISTRO_DIR/keyring/debian-archive-keyring.deb $TARGET_DIR
+
+# Prepare keyrings
+KEYRING_DIR=$DISTRO_DIR/keyring/debian-archive-keyring/usr/share/keyrings
+KEYRINGS=$(find $KEYRING_DIR -name "*.gpg"|grep -v removed)
+[ -n "$KEYRINGS" ] && \
+	mkdir -p $TARGET_DIR/etc/apt/trusted.gpg.d/ &&
+	ln -sf apt/trusted.gpg.d $TARGET_DIR/etc/trusted.gpg.d &&
+	install -m 644 $KEYRINGS $TARGET_DIR/etc/apt/trusted.gpg.d/
+
 proot -0 multistrap -f $OUTPUT_DIR/multistrap.conf >> $OUTPUT_DIR/log
 if [ $? -ne 0 ]; then
 	echo "Failed!!!"
