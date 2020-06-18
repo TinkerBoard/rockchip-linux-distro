@@ -39,14 +39,14 @@ link_opencl()
 rm_so
 cd $TARGET_DIR/usr/lib/$TOOLCHAIN
 if [ $RK_TARGET_PRODUCT = rk3399 ];then
-	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-midgard-t86x-r14p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN/
-	ln -s libmali-midgard-t86x-r14p0-wayland.so libmali.so
+	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-midgard-t86x-r18p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN/
+	ln -s libmali-midgard-t86x-r18p0-wayland.so libmali.so
 	link_opencl
 elif [ $RK_TARGET_PRODUCT = rk3288 ];then
-	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-midgard-t76x-r14p0-r0p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN/
-	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-midgard-t76x-r14p0-r1p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN/
+	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-midgard-t76x-r18p0-r0p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN/
+	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-midgard-t76x-r18p0-r1p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN/
 	# default link rk3288, S10libmali will mount bind for rk3288w
-	ln -s libmali-midgard-t76x-r14p0-r0p0-wayland.so libmali.so
+	ln -s libmali-midgard-t76x-r18p0-r0p0-wayland.so libmali.so
 	install -m 0755 -D $TOP_DIR/external/libmali/overlay/S10libmali_rk3288 $TARGET_DIR/etc/init.d/S10libmali
 	link_opencl
 elif [ $RK_TARGET_PRODUCT = rk3328 ];then
