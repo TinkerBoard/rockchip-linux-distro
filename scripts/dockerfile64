@@ -1,0 +1,23 @@
+FROM hub.c.163.com/library/debian:buster
+MAINTAINER Eddie Cai "eddie.cai@gmail.com"
+
+
+# setup multiarch enviroment
+RUN dpkg --add-architecture arm64 && \
+	echo "deb http://deb.debian.org/debian buster main" > /etc/apt/sources.list && \
+	echo "deb http://deb.debian.org/debian buster-updates main " >> /etc/apt/sources.list && \
+	echo "deb http://security.debian.org buster/updates main " >> /etc/apt/sources.list && \
+	echo "deb-src http://deb.debian.org/debian buster main " >> /etc/apt/sources.list && \
+	echo "deb-src http://deb.debian.org/debian buster-updates main " >> /etc/apt/sources.list && \
+	echo "deb-src http://security.debian.org buster/updates main " >> /etc/apt/sources.list && \
+	apt-get update
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get install -y apt-utils crossbuild-essential-arm64 sudo git fakeroot devscripts cmake vim qemu-user-static binfmt-support dh-make dh-exec pkg-kde-tools device-tree-compiler bc cpio parted dosfstools mtools libssl-dev libpciaccess-dev && \
+	apt-get build-dep -y -a arm64 libdrm xorg-server
+
+RUN useradd -c 'rk user' -m -d /home/rk -s /bin/bash rk && \
+	sed -i -e '/\%sudo/ c \%sudo ALL=(ALL) NOPASSWD: ALL' /etc/sudoers && \
+	usermod -a -G sudo rk
+
+USER rk
+
