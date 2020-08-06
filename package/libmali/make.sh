@@ -51,7 +51,7 @@ elif [ $RK_TARGET_PRODUCT = rk3288 ];then
 	link_opencl
 elif [ $RK_TARGET_PRODUCT = rk3328 ];then
 	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-utgard-450-r7p0-r0p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN/
-	ln -s libmali-utgard-450-r7p0-r0p0-wayland.so libmali.so
+	ln -s libmali-utgard-450-r7p0-wayland.so libmali.so
 	link_opencl
 elif [ $RK_TARGET_PRODUCT = px3se ];then
 	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-utgard-400-r7p0-r3p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN
@@ -63,12 +63,12 @@ elif [ $RK_TARGET_PRODUCT = rk3128 ];then
 	ln -s libmali-utgard-400-r7p0-r1p1-wayland.so
 elif [ $RK_TARGET_PRODUCT = rk3326 ] || [ $RK_TARGET_PRODUCT == px30 ];then
 	if [ $RK_ARCH = arm64 ];then
-		install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-bifrost-g31-rxp0-wayland-gbm.so $TARGET_DIR/usr/lib/$TOOLCHAIN
-		ln -s libmali-bifrost-g31-rxp0-wayland-gbm.so libmali.so
+		install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-bifrost-g31-rxp0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN
+		ln -s libmali-bifrost-g31-rxp0-wayland.so libmali.so
 		link_opencl
 	elif [ $RK_ARCH = arm ];then
-		install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-bifrost-g31-rxp0-wayland-gbm.so $TARGET_DIR/usr/lib/$TOOLCHAIN
-		ln -s libmali-bifrost-g31-rxp0-wayland-gbm.so libmali.so
+		install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-bifrost-g31-rxp0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN
+		ln -s libmali-bifrost-g31-rxp0-wayland.so libmali.so
 		link_opencl
 	fi
 fi
