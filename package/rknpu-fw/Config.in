@@ -1,0 +1,15 @@
+config BR2_PACKAGE_RKNPU_FW
+	bool "rknpu firmware"
+    select BR2_PACKAGE_RKNPU_PCIE
+	help
+	  "Copy rknpu firmware and upgrade"
+
+config BR2_PACKAGE_RKNPU_USB
+	bool "rknpu upgrade firmware with usb "
+	help
+	  "rknpu firmware upgrade"
+
+config BR2_PACKAGE_RKNPU_PCIE
+	bool "rknpu upgrade firmware with pcie"
+	help
+	  "rknpu firmware upgrade"
