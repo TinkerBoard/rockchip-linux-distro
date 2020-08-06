@@ -38,7 +38,7 @@ link_opencl()
 
 rm_so
 cd $TARGET_DIR/usr/lib/$TOOLCHAIN
-if [ $RK_TARGET_PRODUCT = rk3399 ];then
+if [ $RK_TARGET_PRODUCT = rk3399 ] || [ $RK_TARGET_PRODUCT = rk3399pro ];then
 	install -m 0644 -D $TOP_DIR/external/libmali/lib/$TOOLCHAIN/libmali-midgard-t86x-r18p0-wayland.so $TARGET_DIR/usr/lib/$TOOLCHAIN/
 	ln -s libmali-midgard-t86x-r18p0-wayland.so libmali.so
 	link_opencl
