@@ -7,17 +7,6 @@ AUTH=$4
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true LC_ALL=C LANGUAGE=C LANG=C
 export PATH=$PATH:/usr/sbin:/sbin
 export PROOT_NO_SECCOMP=1
-if [ $ARCH == arm64 ];then
-        QEMU_ARCH=aarch64
-        DEB_SOURCE_ARCH=arm64
-elif [ $ARCH == arm ];then
-        QEMU_ARCH=arm
-        DEB_SOURCE_ARCH=armhf
-else
-        echo "$ARCH is not a valid arch. we only support arm and arm64! set to arm64"
-        QEMU_ARCH=aarch64
-        DEB_SOURCE_ARCH=arm64
-fi
 
 CHROOTQEMUCMD="proot -q qemu-$QEMU_ARCH-static -v -1 -0 -b /dev -b /sys -b /proc -r"
 CHROOTCMD="proot -v -1 -0 -r"
