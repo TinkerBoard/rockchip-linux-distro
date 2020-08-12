@@ -27,7 +27,7 @@ if [ $RK_ARCH == arm64 ];then
 elif [ $RK_ARCH == arm ];then
 	export TOOLCHAIN_DIR=$TOP_DIR/prebuilts/gcc/linux-x86/arm/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf
 	export TOOLCHAIN=arm-linux-gnueabihf
-	export QEMU_ARCH=aarch64
+	export QEMU_ARCH=arm
 	export DEB_SOURCE_ARCH=armhf
 fi
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
