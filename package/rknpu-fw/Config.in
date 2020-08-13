@@ -1,6 +1,5 @@
 config BR2_PACKAGE_RKNPU_FW
 	bool "rknpu firmware"
-    select BR2_PACKAGE_RKNPU_PCIE
 	help
 	  "Copy rknpu firmware and upgrade"
 
